@@ -34,13 +34,17 @@ web.sh script installs and configures httpd and mod_jk (VM1)
 app.sh script installs and configures tomcat and its dependencies (VM2)
 
 VagrantFile 
+
 ![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/Vagrantfile.png "task7")
 
 web.conf
+
 ![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/web.png "task7")
 
 app.conf
+
 ![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/app.png "task7")
 
 Result
+
 ![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/result.png "task7")
