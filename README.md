@@ -7,6 +7,7 @@ Task 1. Vagrant
 ![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/1.png "task1")
 ![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/11.png "task1")
 
+
 2. Initialize new Vagrant project
 
 ![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/2.png "task2")
