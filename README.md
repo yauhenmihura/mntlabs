@@ -15,6 +15,7 @@ Task 1. Vagrant
 3. Update configuration to use specific vagrant box (sbeliakou/centos-6.7-x86_64)
 
 cd mntlab
+
 vagrant box add sbeliakou/centos-6.7-x86_64 /opt/sbeliakou-vagrant-centos-6.7-x86_64.box 
 
 4. Configure multiple VM’s in single Vagrantfile (2 VM’s):
