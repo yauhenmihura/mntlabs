@@ -9,7 +9,7 @@ Task 1. Vagrant
 
 2. Initialize new Vagrant project
 
-![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/1.png "task2")
+![alt text](https://github.com/yauhenmihura/vagrant/blob/master/sources/pics/2.png "task2")
 
 3. Update configuration to use specific vagrant box (sbeliakou/centos-6.7-x86_64)
 
