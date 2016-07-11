@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
       machine.memory = "512"    
       machine.cpus = 1
     end
-    web.vm.provision "shell", path: "web.sh" 
+    web.vm.provision "shell", path: "/sources/web.sh" 
   end
 
 # Second virtual machine with tomcat
@@ -31,6 +31,6 @@ Vagrant.configure("2") do |config|
        machine.memory = "1024"
        machine.customize ["modifyvm", :id, "--cpuexecutioncap", "35"]    
        end  
-    db.vm.provision "shell", path: "app.sh"
+    db.vm.provision "shell", path: "/sources/app.sh"
   end
 end
