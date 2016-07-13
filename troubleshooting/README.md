@@ -3,81 +3,80 @@
 <h2> Report Table:</h2>
 </header>
 <body>
-<table fontsize="5" text-align="left" border="1">
+<table style="font-size:.5em" text-align="left" border="1">
 <tr>
-  <td width="15$%" align="center"><b>Issue</b></td>
+  <td align="center"><b>Issue</b></td>
   <td align="center"><b>How to find</b</td>
   <td align="center"><b>Time to find</b</td>
   <td align="center"><b>How to fix</b</td>
   <td align="center"><b>Time to fix</b</td>
  </tr>
 <tr> 
-  <td>Apache doesnt work on default address and redirect on http://mntlab</td>
-  <td>- used curl -IL 192.168.56.10 from local and global hosts and got different response
-- used tail -f acces.log
+  <td align="left">Apache doesnt work on default address and redirect on http://mntlab</td>
+  <td>- used curl -IL 192.168.56.10 from <br>local and global hosts and got<br> different response <br>- used tail -f acces.log
 </td>
   <td>2 min</td>
-  <td>Used apachectl -S to check syntax. 
-Result: Configuration has two vitrualhosts. One of them in httpd.conf and another one in vhost.conf 
-Then opened these two files and tried to find incorrect syntax.
-I made the following changes:
-- in httpd.conf:
-removed virtualhosts which redirects to mntlab
-- in vhosts.conf changed vhost from mntlab to *:80
-- apachectl restart and then 
-- used curl -IL 192.168.56.10 from both hosts
-Result: got error 503 from application server
+  <td>- Used apachectl -S to check syntax. 
+<br>Result: Configuration has two vitrualhosts. One of them in httpd.conf and another one in vhost.conf 
+<br>Then opened these two files and tried to find incorrect syntax.
+<br>I made the following changes:
+<br>- in httpd.conf:
+<br>removed virtualhosts which redirects to mntlab
+<br>- in vhosts.conf changed vhost from mntlab to *:80
+<br>- apachectl restart and then 
+<br>- used curl -IL 192.168.56.10 from both hosts
+<br>Result: got error 503 from application server
 </td>
   <td>30 min</td>
 </tr>
 <tr>
   <td>Tomcat is not running</td>
   <td>- ps -ef | grep tomcat
-Tomcat is not running  
-- service tomcat start
-then also ps -ef | grep tomcat
-Tomcat is not running
-Checked /etc/init.d/tomcat
-- try to start
+<br>Tomcat is not running  
+<br>- service tomcat start
+<br>then also ps -ef | grep tomcat
+<br>Tomcat is not running
+<br>Checked /etc/init.d/tomcat
+<br>- try to start
 /opt/apache/tomcat//current/bin/startup.sh"
-- used tail -f catalina.out
+<br>- used tail -f catalina.out
 </td>
   <td>5 min</td>
   <td>Went to /etc/init.d/ and removed /dev/null 
-Tried to start tomcat service. Then I got error “can’t find setclasspath.sh”. I tried to found this string in tomcat configs. And found incorrect variables in bashrc and commented them.
-- Then I tried to start tomcat again and got error about java, checked logs, checked current version of java and configured alternatives --config java 1
-- service tomcat start
-Tomcat is starting
-netstat -natupl | grep java. Port is listening. 
-curl -IL 192.168.56.10:8080 and got response
+<br>Tried to start tomcat service. <br>Then I got error “can’t find setclasspath.sh”. <br>I tried to found this string in tomcat configs. <br>And found incorrect variables in bashrc and commented them.
+<br>- Then I tried to start tomcat again and got error about java, checked logs, checked current version of java and configured alternatives --config java 1
+<br>- service tomcat start
+<br>Tomcat is starting
+<br>netstat -natupl | grep java. Port is listening. 
+<br>curl -IL 192.168.56.10:8080 and got response
 </td>
   <td>30 min</td>
 </tr>
 <tr>
   <td>Workers doesn't work</td>
   <td>tail -f /var/log/httpd/mod_jk
-cat /etc/httpd/conf.d/workers.properties
+<br>cat /etc/httpd/conf.d/workers.properties
 </td>
   <td>5 min</td>
-  <td>I opened modjk log. This file had some errors with tomcat.worker. I opened workers.properties and fixed incorrect parameters for worker names and IP.
-apachectl -k graceful
-curl -IL 192.168.56.10
+  <td>I opened modjk log. This file had some errors with tomcat.worker. <br>I opened workers.properties and fixed incorrect parameters for worker names and IP.
+<br>apachectl -k graceful
+<br>curl -IL 192.168.56.10
 </td>
   <td>30 min</td>
 </tr>
 <tr>
   <td>iptables doesnt start </td>
   <td>iptables -L -n
-service is not running
-lsattr |grep iptables
+<br>service is not running
+<br>lsattr |grep iptables
 </td>
   <td>10 min</td>
   <td>I checked iptables and restarted them.
-It didn't start due to error in line with COMMIT.
-Then I couldn't edit /etc/sysconfig/iptables from root. I found next command in google and checked this file with command lsattr |grep iptables and found that this file had immunity attribute. 
-Then I used command chattr -i /etc/sysconfig/iptables, opened with vim and tried to rewrote line “commit”, and checked other lines. 
-Added -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT to open port 80. 
-Found mistake in -A INPUT -m state --state RELATED -j ACCEPT and added ESTABLISHED after RELATED. Then restarted iptables. It started successful.
+<br>It didn't start due to error in line with COMMIT.
+<br>Then I couldn't edit /etc/sysconfig/iptables from root. <br>I found next command in google and checked this file with command lsattr |grep iptables and found that this file had immunity attribute. 
+<br>Then I used command chattr -i /etc/sysconfig/iptables, opened with vim and tried to rewrote line “commit”, and checked other lines. 
+<br>Added -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT to open port 80. 
+<br>Found mistake in -A INPUT -m state --state RELATED -j ACCEPT and added ESTABLISHED after RELATED. Then restarted iptables. <br>It started successful.
 </td>
   <td>30 min</td>
 </tr>
@@ -118,8 +117,9 @@ tomcat: su tomcat in /etc/init.d/tomcat
 
 <p><b>What configuration files are used to make components work with each other?</b></p>
 Httpd.conf, vhost.conf, workers.properties, server.xml
-What does it mean: “load average: 1.18, 0.95, 0.83”?
-one unit per one core
+
+<p><b>What does it mean: “load average: 1.18, 0.95, 0.83”?</b></p>
+One unit per one core
 
 </body>
 </html>
