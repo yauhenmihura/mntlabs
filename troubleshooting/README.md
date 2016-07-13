@@ -1,12 +1,15 @@
 <html>
-<h1> Report Table:</h1>
-<table>
+<header>
+<h2> Report Table:</h2>
+</header>
+<body>
+<table fontsize="5" text-align="left" border="1">
 <tr>
-  <td>Issue</td>
-  <td>How to find</td>
-  <td>Time to find</td>
-  <td>How to fix</td>
-  <td>Time to fix</td>
+  <td width="15$%" align="center"><b>Issue</b></td>
+  <td align="center"><b>How to find</b</td>
+  <td align="center"><b>Time to find</b</td>
+  <td align="center"><b>How to fix</b</td>
+  <td align="center"><b>Time to fix</b</td>
  </tr>
 <tr> 
   <td>Apache doesnt work on default address and redirect on http://mntlab</td>
@@ -80,44 +83,45 @@ Found mistake in -A INPUT -m state --state RELATED -j ACCEPT and added ESTABLISH
 </tr>
 </table>
 
-<p>Additional Questions:
-What java version is installed?</p>
+<p><b>Additional Questions:
+<br>What java version is installed?</b></p>
 
 [vagrant@mntlab ~]$ java -version
-java version "1.7.0_79"
-Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
+<br>java version "1.7.0_79"
+<br>Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
+<br>Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
 
-<p>How was it installed and configured?</p>
+<p><b>How was it installed and configured?</b></p>
 
 It was installed in /opt/oracle/java/x64/ and configured with alternatives
-Also we can configured with JAVA_HOME
+<br>Also we can configured with JAVA_HOME
 
-Where are log files of tomcat and httpd?
+<p><b>Where are log files of tomcat and httpd?</b></p>
+
 Httpd: /var/log/httpd/
-tomcat: /opt/apache/tomcat/7.0.62/logs/
-But we can make symbol link for tomcat logs to /var/logs/tomcat/. It more comfortable
+<br>tomcat: /opt/apache/tomcat/7.0.62/logs/
+<br>But we can make symbol link for tomcat logs to /var/logs/tomcat/. It more comfortable
 
-Where is JAVA_HOME and what is it?
+<p><b>Where is JAVA_HOME and what is it?</b></p>
 JAVA_HOME is a variables that helps to locate JDK and JRE to other applications.
 In general located in user ~/.bash_profile
 
-Where is tomcat installed?
+<p><b>Where is tomcat installed?</b></p>
 Tomcat installed in /opt/apache/tomcat/7.0.62/
 
-What is CATALINA_HOME?
+<p><b>What is CATALINA_HOME?</b></p>
 It is home directory of tomcat: /opt/apache/tomcat/7.0.62/
 
-What users run httpd and tomcat processes? How is it configured?
+<p><b>What users run httpd and tomcat processes? How is it configured?</b></p>
 Httpd: user: apache, this user is configured in httpd.conf “User apache”
 tomcat: su tomcat in /etc/init.d/tomcat
 
-What configuration files are used to make components work with each other?
+<p><b>What configuration files are used to make components work with each other?</b></p>
 Httpd.conf, vhost.conf, workers.properties, server.xml
 What does it mean: “load average: 1.18, 0.95, 0.83”?
 one unit per one core
 
-
+</body>
 </html>
 
 
